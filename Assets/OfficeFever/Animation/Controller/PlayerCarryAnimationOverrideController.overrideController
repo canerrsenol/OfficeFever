@@ -7,5 +7,9 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PlayerCarryAnimationOverrideController
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 28c5eb5a3f7862c4a833d7c7b70e0bb6, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: fd8883ae98fb93e4d8092008cc4197f3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0c886b2af82298c4b8a6f38a4516ba7f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b1951e8b17a834a46b2ddc9785879328, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 5f32e3774cc662045b4b0ac065dc996b, type: 2}
