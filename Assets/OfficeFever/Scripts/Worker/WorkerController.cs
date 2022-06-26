@@ -7,9 +7,9 @@ namespace OfficeFever.Worker
 {
     public class WorkerController : MonoBehaviour
     {
-        [SerializeField] private GameObject moneyPrefab;
-        [SerializeField] private Transform paperPoolTransform;
         [SerializeField] private float workTime;
+        [SerializeField] private Transform papersSpawnTransform;
+        [SerializeField] private MoneyHolder moneyHolder;
 
         private float currentOwnedTime;
         private List<GameObject> paperList = new List<GameObject>();
@@ -35,21 +35,40 @@ namespace OfficeFever.Worker
                 }
             }
         }
-
-        public void AddPaper(GameObject paper)
+        
+        public void GetPaper(GameObject paper)
         {
+            paper.transform.parent = papersSpawnTransform;
+            paper.transform.position = CalculatePosition();
+            paper.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             paperList.Add(paper);
+        }
+
+        private Vector3 CalculatePosition()
+        {
+            Vector3 spawnPosition = Vector3.zero;
+            if(paperList.Count > 0)
+            {
+                spawnPosition = paperList.Last().transform.position + Vector3.up / 15f;
+            }
+            else
+            {
+                spawnPosition = papersSpawnTransform.position;
+            }
+
+            return spawnPosition;
         }
 
         private void DeletePaper()
         {
-            paperList.Last().transform.parent = paperPoolTransform;
+            //paperList.Last().transform.parent = paperPoolTransform;
             paperList.RemoveAt(paperList.Count - 1);
+            
         }
 
         private void SpawnMoney()
         {
-
+            moneyHolder.CreateMoney();
         }
 
     }

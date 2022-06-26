@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using OfficeFever.PaperPrinter;
 using OfficeFever.PlayerAnimation;
+using OfficeFever.Worker;
 using UnityEngine;
 
 namespace OfficeFever.Carry
@@ -15,6 +16,7 @@ namespace OfficeFever.Carry
         private List<GameObject> carryList = new List<GameObject>();
         private bool isCarrying = false;
         private Printer printer;
+        private WorkerController workerController;
         private float currentOwnedTime;
 
         private void Start()
@@ -27,6 +29,10 @@ namespace OfficeFever.Carry
             if(other.CompareTag("Print"))
             {
                 printer = other.GetComponent<Printer>();
+            }
+            else if(other.CompareTag("Pc"))
+            {
+                workerController = other.GetComponent<WorkerController>();
             }
         }
 
@@ -44,6 +50,24 @@ namespace OfficeFever.Carry
                     currentOwnedTime -= Time.deltaTime;
                 }
             }
+            else if(other.CompareTag("Pc"))
+            {
+                if(currentOwnedTime < 0 && carryList.Count > 0)
+                {
+                    PutPaper();
+                    currentOwnedTime = takeDropTime;
+                }
+                else
+                {
+                    currentOwnedTime -= Time.deltaTime;
+                }
+            }
+        }
+
+        private void PutPaper()
+        {
+            workerController.GetPaper(carryList.Last());
+            carryList.RemoveAt(carryList.Count - 1);
         }
 
         private void TakePaper()
