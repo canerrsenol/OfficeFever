@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.7365512, g: 0.7825667, b: 0.7514192, a: 1}
+  m_IndirectSpecularColor: {r: 0.65484, g: 0.7584241, b: 0.8294007, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -658,7 +658,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &368377030
 Transform:
@@ -1154,6 +1154,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649751021}
   m_Mesh: {fileID: 4300000, guid: 3e8ab2fed2396ac4cbbdbc1f3b74594a, type: 2}
+--- !u!1 &656934082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 656934084}
+  - component: {fileID: 656934083}
+  m_Layer: 0
+  m_Name: PaperPoolController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &656934083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656934082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a0a9343307213448f3f405f755b34c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paperModel: {fileID: 4768941179209145786, guid: 99dbb20d29b17f140a0625a9232ae57d, type: 3}
+  poolSize: 100
+--- !u!4 &656934084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656934082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.224203, y: -2.150265, z: 17.333748}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3984,12 +4029,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1886038775}
   - component: {fileID: 1886038776}
+  - component: {fileID: 1886038777}
   m_Layer: 0
   m_Name: Printer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1886038775
 Transform:
@@ -4023,6 +4069,21 @@ MonoBehaviour:
   paperModel: {fileID: 4768941179209145786, guid: 99dbb20d29b17f140a0625a9232ae57d, type: 3}
   paperSpawnSpeed: 2
   desiredPosition: {fileID: 368377030}
+  maxPaperCount: 5
+  paperPoolController: {fileID: 0}
+--- !u!65 &1886038777
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886038774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.79, y: 1, z: 0.55}
+  m_Center: {x: -0.41, y: 0.5, z: 0.79}
 --- !u!1 &1890660545
 GameObject:
   m_ObjectHideFlags: 0
@@ -4872,14 +4933,12 @@ GameObject:
   - component: {fileID: 4420211386581859}
   - component: {fileID: 33464191410004859}
   - component: {fileID: 23685244443812331}
-  - component: {fileID: 2496290376811424959}
-  - component: {fileID: 208428301963910937}
   m_Layer: 0
   m_Name: Printer01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4420211386581859
 Transform:
@@ -4978,22 +5037,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!208 &208428301963910937
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943361860923987}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.25, y: 0.09900001, z: 0.193}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.09900001, z: 0.025}
-  m_TimeToStationary: 0.5
 --- !u!4 &234480624706101434
 Transform:
   m_ObjectHideFlags: 0
@@ -5034,7 +5077,7 @@ Transform:
   m_GameObject: {fileID: 919132148983660195}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.00022641, y: 0, z: 0.00045061}
-  m_LocalScale: {x: 0.71718746, y: 0.71718746, z: 0.71718746}
+  m_LocalScale: {x: 0.60960937, y: 0.60960937, z: 0.60960937}
   m_Children:
   - {fileID: 5465940247381656717}
   - {fileID: 5983287092674860251}
@@ -5385,22 +5428,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!208 &2139391096936249559
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2256583216600443513}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.95300007, y: 0.40600002, z: 0.453}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0.047000002, y: 0.40600002, z: 0.016}
-  m_TimeToStationary: 0.5
 --- !u!23 &2233955340062880661
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5464,13 +5491,12 @@ GameObject:
   - component: {fileID: 2243698593824516941}
   - component: {fileID: 2233955340062880661}
   - component: {fileID: 8362136955840958333}
-  - component: {fileID: 2139391096936249559}
   m_Layer: 0
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2259654613881677523
 Transform:
@@ -5614,19 +5640,6 @@ Transform:
   m_Father: {fileID: 366175168569971613}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2496290376811424959
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943361860923987}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.49993843, y: 0.1986345, z: 0.3869789}
-  m_Center: {x: -0.0000307858, y: 0.09931725, z: 0.025260553}
 --- !u!4 &2559285841084481009
 Transform:
   m_ObjectHideFlags: 0
