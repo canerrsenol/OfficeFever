@@ -1,35 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PaperPoolController : MonoBehaviour
+namespace OfficeFever.PoolSystem
 {
-    [SerializeField] GameObject paperModel;
-    [SerializeField] int poolSize;
-
-    private void Awake()
+    public class PaperPoolController : MonoBehaviour
     {
-        CreatePool();
-    }
+        [SerializeField] GameObject paperModel;
+        [SerializeField] int poolSize;
 
-    public GameObject GetPaperFromPool()
-    {
-        foreach (Transform child in transform)
+        private void Awake()
         {
-            if(!child.gameObject.activeSelf)
-            {
-                return child.gameObject;
-            }
+            CreatePool();
         }
 
-        return null;
-    }
-
-    private void CreatePool()
-    {
-        for (int i = 0; i < poolSize; i++)
+        public GameObject GetPaperFromPool()
         {
-            Instantiate(paperModel, Vector3.zero, Quaternion.identity, transform);
+            foreach (Transform child in transform)
+            {
+                if (!child.gameObject.activeSelf)
+                {
+                    return child.gameObject;
+                }
+            }
+
+            return null;
+        }
+
+        private void CreatePool()
+        {
+            for (int i = 0; i < poolSize; i++)
+            {
+                Instantiate(paperModel, Vector3.zero, Quaternion.identity, transform);
+            }
         }
     }
 }
+

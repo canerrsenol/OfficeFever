@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using OfficeFever.PoolSystem;
 using UnityEngine;
 
 namespace OfficeFever.PaperPrinter
@@ -14,6 +15,8 @@ namespace OfficeFever.PaperPrinter
 
         private float currentOwnedTime;
         private List<GameObject> paperList = new List<GameObject>();
+
+        public List<GameObject> PaperList { get { return paperList;}}
 
         private void Start()
         {
@@ -34,6 +37,17 @@ namespace OfficeFever.PaperPrinter
             }
         }
 
+        public GameObject GetLastPaper()
+        {
+            GameObject paper = paperList.Last();
+            if(paper != null)
+            {
+                paperList.RemoveAt(paperList.Count-1);
+                return paper;
+            }
+            return null;
+        }
+
         private void SpawnPaper()
         {
             Vector3 spawnPosition = Vector3.zero;
@@ -46,6 +60,7 @@ namespace OfficeFever.PaperPrinter
                spawnPosition = paperList.Last().transform.position + Vector3.up / 15; 
             } 
             GameObject paper = paperPoolController.GetPaperFromPool();
+            paper.transform.position = spawnPosition;
             paper.gameObject.SetActive(true);
             paperList.Add(paper);
         }
