@@ -57,6 +57,7 @@ namespace OfficeFever.Money
                     money -= 100;
                     buyableController.Pay();
                     currentOwnedTime = buyTime;
+                    UpdateUI();
                 }
                 else
                 {
