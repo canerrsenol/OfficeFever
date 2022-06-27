@@ -14,6 +14,20 @@ public class MoneyHolder : MonoBehaviour
         moneyList.Add(obj);
     }
 
+    public int ReturnMoneyListLength()
+    {
+        return moneyList.Count;
+    }
+
+    public void ResetList()
+    {
+        foreach(GameObject obj in moneyList)
+        {
+            Destroy(obj);
+        }
+        moneyList = new List<GameObject>();
+    }
+
     private Vector3 CalculatePosition()
         {
             Vector3 spawnPosition = Vector3.zero;

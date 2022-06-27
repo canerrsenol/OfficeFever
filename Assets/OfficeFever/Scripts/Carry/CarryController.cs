@@ -68,6 +68,12 @@ namespace OfficeFever.Carry
         {
             workerController.GetPaper(carryList.Last());
             carryList.RemoveAt(carryList.Count - 1);
+
+            if(carryList.Count < 1)
+            {
+                GetComponent<AnimationController>().AnimationOverride();
+                isCarrying = false;
+            }
         }
 
         private void TakePaper()

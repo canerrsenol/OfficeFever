@@ -9,6 +9,7 @@ namespace OfficeFever.Worker
     {
         [SerializeField] private float workTime;
         [SerializeField] private Transform papersSpawnTransform;
+        [SerializeField] private Transform paperPoolTransform;
         [SerializeField] private MoneyHolder moneyHolder;
 
         private float currentOwnedTime;
@@ -61,9 +62,10 @@ namespace OfficeFever.Worker
 
         private void DeletePaper()
         {
-            //paperList.Last().transform.parent = paperPoolTransform;
+            Transform lastPaper = paperList.Last().transform;
+            lastPaper.parent = paperPoolTransform;
+            lastPaper.gameObject.SetActive(false);
             paperList.RemoveAt(paperList.Count - 1);
-            
         }
 
         private void SpawnMoney()
