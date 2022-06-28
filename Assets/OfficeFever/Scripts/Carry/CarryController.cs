@@ -80,7 +80,7 @@ namespace OfficeFever.Carry
         {
             GameObject paper = printer.GetLastPaper();
             paper.transform.parent = carryTransform;
-            paper.transform.position = CalculatePosition();
+            paper.transform.position = ExtensionMethods.CalculatePosition(carryTransform.position, carryList);
             paper.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
 
             carryList.Add(paper);
@@ -90,21 +90,6 @@ namespace OfficeFever.Carry
                 isCarrying = true;
                 GetComponent<AnimationController>().AnimationOverride();
             }
-        }
-
-        private Vector3 CalculatePosition()
-        {
-            Vector3 spawnPosition;
-            if(carryList.Count > 0)
-            {
-                spawnPosition = carryList.Last().transform.position + Vector3.up / 15f;
-            }
-            else
-            {
-                spawnPosition = carryTransform.position;
-            }
-
-            return spawnPosition;
         }
     }
 }

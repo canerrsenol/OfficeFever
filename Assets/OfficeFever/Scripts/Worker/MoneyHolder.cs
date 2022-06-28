@@ -10,7 +10,8 @@ public class MoneyHolder : MonoBehaviour
 
     public void CreateMoney()
     {
-        GameObject obj = Instantiate(moneyPrefab, CalculatePosition(), Quaternion.identity, transform);
+        GameObject obj = Instantiate(moneyPrefab, ExtensionMethods.CalculatePosition(transform.position, moneyList), 
+        Quaternion.identity, transform);
         moneyList.Add(obj);
     }
 
@@ -21,25 +22,10 @@ public class MoneyHolder : MonoBehaviour
 
     public void ResetList()
     {
-        foreach(GameObject obj in moneyList)
+        foreach (GameObject obj in moneyList)
         {
             Destroy(obj);
         }
         moneyList = new List<GameObject>();
     }
-
-    private Vector3 CalculatePosition()
-        {
-            Vector3 spawnPosition = Vector3.zero;
-            if(moneyList.Count > 0)
-            {
-                spawnPosition = moneyList.Last().transform.position + Vector3.up / 15f;
-            }
-            else
-            {
-                spawnPosition = transform.position;
-            }
-
-            return spawnPosition;
-        }
 }

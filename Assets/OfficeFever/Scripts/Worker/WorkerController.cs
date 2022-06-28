@@ -40,24 +40,9 @@ namespace OfficeFever.Worker
         public void GetPaper(GameObject paper)
         {
             paper.transform.parent = papersSpawnTransform;
-            paper.transform.position = CalculatePosition();
+            paper.transform.position = ExtensionMethods.CalculatePosition(papersSpawnTransform.position, paperList);
             paper.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             paperList.Add(paper);
-        }
-
-        private Vector3 CalculatePosition()
-        {
-            Vector3 spawnPosition = Vector3.zero;
-            if(paperList.Count > 0)
-            {
-                spawnPosition = paperList.Last().transform.position + Vector3.up / 15f;
-            }
-            else
-            {
-                spawnPosition = papersSpawnTransform.position;
-            }
-
-            return spawnPosition;
         }
 
         private void DeletePaper()
